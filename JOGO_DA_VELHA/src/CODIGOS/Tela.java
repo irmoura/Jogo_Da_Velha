@@ -13,9 +13,10 @@ import javax.swing.JOptionPane;
  */
 public class Tela extends javax.swing.JFrame {
     
-    public int total_de_movimentos, a1, a2, a3, b1, b2, b3, c1, c2, c3;
+    public int total_de_movimentos, opcao, a1, a2, a3, b1, b2, b3, c1, c2, c3;
     public String ia1 = "", ia2 = "", ia3 = "", ib1 = "", ib2 = "", ib3 = "", ic1 = "", ic2 = "", ic3 = "";
-
+    public boolean zerar = false;
+    
     /**
      * Creates new form Tela
      */
@@ -33,29 +34,46 @@ public class Tela extends javax.swing.JFrame {
            ia1.equals("X") && ib2.equals("X") && ic3.equals("X") || ia1.equals("ball") && ib2.equals("ball") && ic3.equals("ball") ||
            ia3.equals("X") && ib2.equals("X") && ic1.equals("X") || ia3.equals("ball") && ib2.equals("ball") && ic1.equals("ball")){
             JOptionPane.showMessageDialog(null,"Fim de jogo");
-            System.exit(0);
+//            System.exit(0);
+            zerar = true;
+        }
+        if(zerar == true){
             
-//            A1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/branco.png")));
-//            A2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/branco.png")));
-//            A3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/branco.png")));
-//            B1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/branco.png")));
-//            B2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/branco.png")));
-//            B3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/branco.png")));
-//            C1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/branco.png")));
-//            C2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/branco.png")));
-//            C3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/branco.png")));
-//            
-//            ia1 = ""; ia2 = ""; ia3 = ""; ib1 = ""; ib2 = ""; ib3 = ""; ic1 = ""; ic2 = ""; ic3 = "";
-//            total_de_movimentos = 0;
-//            a1 = 0;
-//            a2 = 0;
-//            a3 = 0;
-//            b1 = 0;
-//            b2 = 0;
-//            b3 = 0;
-//            c1 = 0;
-//            c2 = 0;
-//            c3 = 0;
+            A1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/branco.png")));
+            A2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/branco.png")));
+            A3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/branco.png")));
+            B1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/branco.png")));
+            B2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/branco.png")));
+            B3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/branco.png")));
+            C1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/branco.png")));
+            C2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/branco.png")));
+            C3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/branco.png")));
+            
+            total_de_movimentos = 0;
+            opcao = 2;
+            a1 = 0;
+            a2 = 0;
+            a3 = 0;
+            b1 = 0;
+            b2 = 0;
+            b3 = 0;
+            c1 = 0;
+            c2 = 0;
+            c3 = 0;
+            
+            this.ia1 = "";
+            this.ia2 = "";
+            this.ia3 = "";
+            this.ib1 = "";
+            this.ib2 = "";
+            this.ib3 = "";
+            this.ic1 = "";
+            this.ic2 = "";
+            this.ic3 = "";
+            
+            zerar = false;
+            
+            formWindowOpened(null);
             
         }
     }
@@ -447,7 +465,7 @@ public class Tela extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         Object[] options = { "O", "X" };   
-        int opcao = JOptionPane.showOptionDialog(null,"Escolha com o que deseja iniciar :","Aviso",
+        opcao = JOptionPane.showOptionDialog(null,"Escolha com o que deseja iniciar :","Aviso",
         JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);   
   
         if (opcao != 0){
