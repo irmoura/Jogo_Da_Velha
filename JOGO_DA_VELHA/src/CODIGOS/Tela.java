@@ -13,8 +13,8 @@ import javax.swing.JOptionPane;
  */
 public class Tela extends javax.swing.JFrame {
     
-    public int total_de_movimentos, opcao, a1, a2, a3, b1, b2, b3, c1, c2, c3;
-    public String ia1 = "", ia2 = "", ia3 = "", ib1 = "", ib2 = "", ib3 = "", ic1 = "", ic2 = "", ic3 = "";
+    public int primeira_escolha, total_de_movimentos, opcao, a1, a2, a3, b1, b2, b3, c1, c2, c3;
+    public String ganhador, ia1 = "", ia2 = "", ia3 = "", ib1 = "", ib2 = "", ib3 = "", ic1 = "", ic2 = "", ic3 = "";
     public boolean zerar = false;
     
     /**
@@ -33,7 +33,12 @@ public class Tela extends javax.swing.JFrame {
            ia3.equals("X") && ib3.equals("X") && ic3.equals("X") || ia3.equals("ball") && ib3.equals("ball") && ic3.equals("ball") ||
            ia1.equals("X") && ib2.equals("X") && ic3.equals("X") || ia1.equals("ball") && ib2.equals("ball") && ic3.equals("ball") ||
            ia3.equals("X") && ib2.equals("X") && ic1.equals("X") || ia3.equals("ball") && ib2.equals("ball") && ic1.equals("ball")){
-            JOptionPane.showMessageDialog(null,"Fim de jogo");
+            
+           if(ganhador.equals("X")){
+               JOptionPane.showMessageDialog(null,"O ganhador foi o X");
+           }else{
+               JOptionPane.showMessageDialog(null,"O ganhador foi a Bola");
+           }
 //            System.exit(0);
             zerar = true;
         }
@@ -49,6 +54,7 @@ public class Tela extends javax.swing.JFrame {
             C2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/branco.png")));
             C3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/branco.png")));
             
+            primeira_escolha = 0;
             total_de_movimentos = 0;
             opcao = 2;
             a1 = 0;
@@ -241,8 +247,9 @@ public class Tela extends javax.swing.JFrame {
         
         a1++;
         if(a1==1){
+            primeira_escolha++;
             total_de_movimentos++;
-            if(total_de_movimentos%2==0){
+            if(primeira_escolha%2==0){
                 A1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/ball.png")));
             }else{
                 A1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/X.png")));
@@ -257,6 +264,8 @@ public class Tela extends javax.swing.JFrame {
             ia1 = "ball";
         }
         
+        ganhador = ia1;
+        
         verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3);
         
     }//GEN-LAST:event_A1ActionPerformed
@@ -266,8 +275,9 @@ public class Tela extends javax.swing.JFrame {
         
         b1++;
         if(b1==1){
+            primeira_escolha++;
             total_de_movimentos++;
-            if(total_de_movimentos%2==0){
+            if(primeira_escolha%2==0){
                 B1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/ball.png")));
             }else{
                 B1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/X.png")));
@@ -282,6 +292,8 @@ public class Tela extends javax.swing.JFrame {
             ib1 = "ball";
         }
         
+        ganhador = ib1;
+        
         verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3);
         
     }//GEN-LAST:event_B1ActionPerformed
@@ -291,8 +303,9 @@ public class Tela extends javax.swing.JFrame {
         
         c1++;
         if(c1==1){
+            primeira_escolha++;
             total_de_movimentos++;
-            if(total_de_movimentos%2==0){
+            if(primeira_escolha%2==0){
                 C1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/ball.png")));
             }else{
                 C1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/X.png")));
@@ -307,6 +320,8 @@ public class Tela extends javax.swing.JFrame {
             ic1 = "ball";
         }
         
+        ganhador = ic1;
+        
         verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3);
         
     }//GEN-LAST:event_C1ActionPerformed
@@ -316,8 +331,9 @@ public class Tela extends javax.swing.JFrame {
         
         a2++;
         if(a2==1){
+            primeira_escolha++;
             total_de_movimentos++;
-            if(total_de_movimentos%2==0){
+            if(primeira_escolha%2==0){
                 A2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/ball.png")));
             }else{
                 A2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/X.png")));
@@ -332,6 +348,8 @@ public class Tela extends javax.swing.JFrame {
             ia2 = "ball";
         }
         
+        ganhador = ia2;
+        
         verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3);
         
     }//GEN-LAST:event_A2ActionPerformed
@@ -341,8 +359,9 @@ public class Tela extends javax.swing.JFrame {
         
         b2++;
         if(b2==1){
+            primeira_escolha++;
             total_de_movimentos++;
-            if(total_de_movimentos%2==0){
+            if(primeira_escolha%2==0){
                 B2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/ball.png")));
             }else{
                 B2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/X.png")));
@@ -357,6 +376,8 @@ public class Tela extends javax.swing.JFrame {
             ib2 = "ball";
         }
         
+        ganhador = ib2;
+        
         verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3);
         
     }//GEN-LAST:event_B2ActionPerformed
@@ -366,8 +387,9 @@ public class Tela extends javax.swing.JFrame {
         
         c2++;
         if(c2==1){
+            primeira_escolha++;
             total_de_movimentos++;
-            if(total_de_movimentos%2==0){
+            if(primeira_escolha%2==0){
                 C2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/ball.png")));
             }else{
                 C2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/X.png")));
@@ -382,6 +404,8 @@ public class Tela extends javax.swing.JFrame {
             ic2 = "ball";
         }
         
+        ganhador = ic2;
+        
         verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3);
         
     }//GEN-LAST:event_C2ActionPerformed
@@ -391,8 +415,9 @@ public class Tela extends javax.swing.JFrame {
         
         a3++;
         if(a3==1){
+            primeira_escolha++;
             total_de_movimentos++;
-            if(total_de_movimentos%2==0){
+            if(primeira_escolha%2==0){
                 A3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/ball.png")));
             }else{
                 A3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/X.png")));
@@ -407,6 +432,8 @@ public class Tela extends javax.swing.JFrame {
             ia3 = "ball";
         }
         
+        ganhador = ia3;
+        
         verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3);
         
     }//GEN-LAST:event_A3ActionPerformed
@@ -416,8 +443,9 @@ public class Tela extends javax.swing.JFrame {
         
         b3++;
         if(b3==1){
+            primeira_escolha++;
             total_de_movimentos++;
-            if(total_de_movimentos%2==0){
+            if(primeira_escolha%2==0){
                 B3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/ball.png")));
             }else{
                 B3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/X.png")));
@@ -432,6 +460,8 @@ public class Tela extends javax.swing.JFrame {
             ib3 = "ball";
         }
         
+        ganhador = ib3;
+        
         verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3);
         
     }//GEN-LAST:event_B3ActionPerformed
@@ -441,8 +471,9 @@ public class Tela extends javax.swing.JFrame {
         
         c3++;
         if(c3==1){
+            primeira_escolha++;
             total_de_movimentos++;
-            if(total_de_movimentos%2==0){
+            if(primeira_escolha%2==0){
                 C3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/ball.png")));
             }else{
                 C3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/X.png")));
@@ -457,6 +488,8 @@ public class Tela extends javax.swing.JFrame {
             ic3 = "ball";
         }
         
+        ganhador = ic3;
+        
         verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3);
         
     }//GEN-LAST:event_C3ActionPerformed
@@ -470,11 +503,11 @@ public class Tela extends javax.swing.JFrame {
   
         if (opcao != 0){
         
-        total_de_movimentos = 0;
+        primeira_escolha = 0;
             
         }else{
               
-        total_de_movimentos = 1;
+        primeira_escolha = 1;
             
         }
         
