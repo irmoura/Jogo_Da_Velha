@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class Tela extends javax.swing.JFrame {
     
-    public int primeira_escolha, total_de_movimentos, opcao, a1, a2, a3, b1, b2, b3, c1, c2, c3;
+    public int primeira_escolha, total_de_movimentos, opcao, a1, a2, a3, b1, b2, b3, c1, c2, c3, x, bola;
     public String ganhador, ia1 = "", ia2 = "", ia3 = "", ib1 = "", ib2 = "", ib3 = "", ic1 = "", ic2 = "", ic3 = "";
     public boolean zerar = false;
     
@@ -24,7 +24,7 @@ public class Tela extends javax.swing.JFrame {
         initComponents();
     }
     
-    public void verificaJogada(String ia1, String ia2, String ia3, String ib1, String ib2, String ib3, String ic1, String ic2, String ic3){
+    public void verificaJogada(String ia1, String ia2, String ia3, String ib1, String ib2, String ib3, String ic1, String ic2, String ic3, int total_de_movimentos){
         if(ia1.equals("X") && ia2.equals("X") && ia3.equals("X") || ia1.equals("ball") && ia2.equals("ball") && ia3.equals("ball") || 
            ib1.equals("X") && ib2.equals("X") && ib3.equals("X") || ib1.equals("ball") && ib2.equals("ball") && ib3.equals("ball") ||
            ic1.equals("X") && ic2.equals("X") && ic3.equals("X") || ic1.equals("ball") && ic2.equals("ball") && ic3.equals("ball") ||
@@ -32,13 +32,23 @@ public class Tela extends javax.swing.JFrame {
            ia2.equals("X") && ib2.equals("X") && ic2.equals("X") || ia2.equals("ball") && ib2.equals("ball") && ic2.equals("ball") ||
            ia3.equals("X") && ib3.equals("X") && ic3.equals("X") || ia3.equals("ball") && ib3.equals("ball") && ic3.equals("ball") ||
            ia1.equals("X") && ib2.equals("X") && ic3.equals("X") || ia1.equals("ball") && ib2.equals("ball") && ic3.equals("ball") ||
-           ia3.equals("X") && ib2.equals("X") && ic1.equals("X") || ia3.equals("ball") && ib2.equals("ball") && ic1.equals("ball")){
-            
-           if(ganhador.equals("X")){
+           ia3.equals("X") && ib2.equals("X") && ic1.equals("X") || ia3.equals("ball") && ib2.equals("ball") && ic1.equals("ball") ||
+           total_de_movimentos == 9){
+           
+           if(!(this.total_de_movimentos == 9)){
+               if(ganhador.equals("X")){
                JOptionPane.showMessageDialog(null,"O ganhador foi o X");
+               x++;
+               vitoriasX.setText("X : "+x);
            }else{
                JOptionPane.showMessageDialog(null,"O ganhador foi a Bola");
+               bola++;
+               vitoriasO.setText("O : "+bola);
            }
+           }else{
+               JOptionPane.showMessageDialog(null,"Deu velha.");
+           }
+           
 //            System.exit(0);
             zerar = true;
         }
@@ -55,7 +65,7 @@ public class Tela extends javax.swing.JFrame {
             C3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/branco.png")));
             
             primeira_escolha = 0;
-            total_de_movimentos = 0;
+            this.total_de_movimentos = 0;
             opcao = 2;
             a1 = 0;
             a2 = 0;
@@ -102,6 +112,8 @@ public class Tela extends javax.swing.JFrame {
         A3 = new javax.swing.JToggleButton();
         B3 = new javax.swing.JToggleButton();
         C3 = new javax.swing.JToggleButton();
+        vitoriasX = new javax.swing.JLabel();
+        vitoriasO = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -192,6 +204,10 @@ public class Tela extends javax.swing.JFrame {
             }
         });
 
+        vitoriasX.setText("X : ");
+
+        vitoriasO.setText("O : ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -199,12 +215,6 @@ public class Tela extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(A1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(B1)
-                        .addGap(5, 5, 5)
-                        .addComponent(C1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(A2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -216,12 +226,28 @@ public class Tela extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(B3)
                         .addGap(5, 5, 5)
-                        .addComponent(C3)))
+                        .addComponent(C3))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(A1)
+                            .addComponent(vitoriasX, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(B1)
+                                .addGap(5, 5, 5)
+                                .addComponent(C1))
+                            .addComponent(vitoriasO, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vitoriasX)
+                    .addComponent(vitoriasO))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(C1)
                     .addComponent(A1)
@@ -235,7 +261,8 @@ public class Tela extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(C3)
                     .addComponent(A3)
-                    .addComponent(B3)))
+                    .addComponent(B3))
+                .addContainerGap())
         );
 
         pack();
@@ -266,7 +293,7 @@ public class Tela extends javax.swing.JFrame {
         
         ganhador = ia1;
         
-        verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3);
+        verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3, total_de_movimentos);
         
     }//GEN-LAST:event_A1ActionPerformed
 
@@ -294,7 +321,7 @@ public class Tela extends javax.swing.JFrame {
         
         ganhador = ib1;
         
-        verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3);
+        verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3, total_de_movimentos);
         
     }//GEN-LAST:event_B1ActionPerformed
 
@@ -322,7 +349,7 @@ public class Tela extends javax.swing.JFrame {
         
         ganhador = ic1;
         
-        verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3);
+        verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3, total_de_movimentos);
         
     }//GEN-LAST:event_C1ActionPerformed
 
@@ -350,7 +377,7 @@ public class Tela extends javax.swing.JFrame {
         
         ganhador = ia2;
         
-        verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3);
+        verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3, total_de_movimentos);
         
     }//GEN-LAST:event_A2ActionPerformed
 
@@ -378,7 +405,7 @@ public class Tela extends javax.swing.JFrame {
         
         ganhador = ib2;
         
-        verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3);
+        verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3, total_de_movimentos);
         
     }//GEN-LAST:event_B2ActionPerformed
 
@@ -406,7 +433,7 @@ public class Tela extends javax.swing.JFrame {
         
         ganhador = ic2;
         
-        verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3);
+        verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3, total_de_movimentos);
         
     }//GEN-LAST:event_C2ActionPerformed
 
@@ -434,7 +461,7 @@ public class Tela extends javax.swing.JFrame {
         
         ganhador = ia3;
         
-        verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3);
+        verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3, total_de_movimentos);
         
     }//GEN-LAST:event_A3ActionPerformed
 
@@ -462,7 +489,7 @@ public class Tela extends javax.swing.JFrame {
         
         ganhador = ib3;
         
-        verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3);
+        verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3, total_de_movimentos);
         
     }//GEN-LAST:event_B3ActionPerformed
 
@@ -490,7 +517,7 @@ public class Tela extends javax.swing.JFrame {
         
         ganhador = ic3;
         
-        verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3);
+        verificaJogada(ia1, ia2, ia3, ib1, ib2, ib3, ic1, ic2, ic3, total_de_movimentos);
         
     }//GEN-LAST:event_C3ActionPerformed
 
@@ -559,5 +586,7 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JToggleButton C1;
     private javax.swing.JToggleButton C2;
     private javax.swing.JToggleButton C3;
+    private javax.swing.JLabel vitoriasO;
+    private javax.swing.JLabel vitoriasX;
     // End of variables declaration//GEN-END:variables
 }
